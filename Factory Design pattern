@@ -1,0 +1,50 @@
+interface Vehicle
+{
+    void drive();
+}
+class Car implements Vehicle
+{
+    public void drive()
+    {
+        System.out.println("Driving a Car");
+    }
+}
+class Truck implements Vehicle
+{
+    public void drive()
+    {
+        System.out.println("Driving a Truck");
+    }
+}
+interface VehicleFactory
+{
+    Vehicle createVehicle();
+}
+class CarFactory implements VehicleFactory 
+{
+    public Vehicle createVehicle()
+    {
+        return new Car();
+    }
+}
+class TruckFactory implements VehicleFactory 
+{
+    public Vehicle createVehicle()
+    {
+        return new Truck();
+    }
+}
+class Main
+{
+public static void main (String[] args) 
+{
+    VehicleFactory carfactory = new CarFactory();
+    Vehicle car = carfactory.createVehicle();
+    car.drive();
+    
+    VehicleFactory truckfactory = new TruckFactory();
+    Vehicle truck = truckfactory.createVehicle();
+    truck.drive();
+    
+}
+}
