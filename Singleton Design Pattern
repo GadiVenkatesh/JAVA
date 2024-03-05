@@ -1,0 +1,38 @@
+class Database
+{
+    private static Database instance;
+    private Database()
+    {
+        
+    }
+    public static Database getInstance()
+    {
+        if(instance==null)
+        {
+            synchronized(Database.class)
+            {
+                if(instance==null)
+                {
+                    instance = new Database();
+                }
+            }
+        }
+        return instance;
+    }
+    public void executequery(String s)
+    {
+        System.out.println("Executing from"+s);
+    }
+}
+public class Main
+{
+	public static void main(String[] args) 
+	{
+	    Database u1 = Database.getInstance();
+	    //System.out.println(u1);
+	    Database u2 = Database.getInstance();
+	    //System.out.println(u2);
+	    u1.executequery("Logging user1");
+	    u2.executequery("Logging user2");
+	}
+}
